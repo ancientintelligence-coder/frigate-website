@@ -13,143 +13,141 @@ function useInView(threshold = 0.1) {
   return { ref, inView };
 }
 const sfade = (inView: boolean, delay = 0): React.CSSProperties => ({
-  opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(28px)",
+  opacity: inView ? 1 : 0,
+  transform: inView ? "translateY(0)" : "translateY(28px)",
   transition: `opacity 0.7s ease ${delay}s, transform 0.7s ease ${delay}s`,
 });
 
 const services = [
   {
-    icon: "🚚", tag: "DSP Partner",
-    title: "Amazon Last-Mile Delivery",
-    intro: "Reliable door-step delivery across all pin codes as an authorized Amazon Delivery Service Partner (DSP).",
-    points: ["Full coverage across all serviceable pin codes", "Proof of delivery for every shipment", "Same-day and next-day delivery options", "Trained delivery executives", "Real-time GPS tracking on all vehicles", "Customer notification at every milestone"],
+    id: "ptl",
+    tag: "PTL",
+    icon: "🚛",
+    title: "Part Truck Load / PTL - LTL",
+    intro: "It is not possible for a client to have a full truck load available each time they have some material to be shipped. All clients, irrespective of their size — be it a large corporate or an MSME — most times need a solution where they can ship loads lesser than a full truck. A service provider has to have a deep penetrated network, operational expertise, technology support and most importantly domain expertise to deliver these solutions. This is where Frigate Logistics is uniquely positioned — we have the capability and proven expertise to pick up any load from any location and deliver it anywhere in the country.",
+    features: [
+      { title: "Optimal Costs", desc: "For cargo that requires less than full truck load space, our competitive structure helps the client maximize delivery efficiency." },
+      { title: "Mixed Shipments", desc: "Our automated systems and vehicle capacity enable us to load varied material that ensures maximum utility of space. We understand the compatibility of goods and safeguard that each customer's goods are given the best possible space allocation to avoid any damage in transit." },
+      { title: "Highest Productivity", desc: "Our predefined routes and transit schedules with a perfect hub & spoke model of transshipments and branches ensure that our vehicles travel at best delivery times. With GPS-fitted vehicles and easy track & trace facility, consignments can be tracked with a click." },
+      { title: "On Time Delivery", desc: "The strong network and operational strength we have built gives us the ability to pick and deliver loads from any part of the country in minimum possible time. With automation and available loads, we reduce transit time and optimize loading-offloading time at various stops." },
+    ],
   },
   {
-    icon: "📋", tag: "MFN Certified",
-    title: "MFN Fulfillment",
-    intro: "Merchant Fulfilled Network order processing — from warehouse pick to dispatch, handled end-to-end.",
-    points: ["Pick, pack, and dispatch operations", "Inventory management support", "Amazon SLA compliance guaranteed", "Order batching and optimization", "Barcode and label printing", "Daily MIS reports to sellers"],
+    id: "ftl",
+    tag: "FTL",
+    icon: "🚚",
+    title: "Full Truck Load Cargo Service",
+    intro: "When a client has a load equal to a full truck, it is easier to assign them the latest truck with trained and reliable drivers, who then ensure that the shipment is picked up and safely delivered at the destination on time. The full truck load consignment does not stop at mid points and hence completes the journey faster.",
+    features: [
+      { title: "Material Safety & Speed", desc: "As the vehicle travels between pick up and destination point without any stop, the consignment is delivered safely and with speed. No intermediate handling means zero risk of damage or loss." },
+      { title: "Fleet and Vendor Network", desc: "Frigate Logistics has the advantage of a vast fleet available across our network. We have all sizes of trucks available for a full truck consignment — whether it is 19 ft, 21 ft or a 32 ft truck." },
+      { title: "Reserved Shipment", desc: "Goods shipped with full truck loads do not get lost in transit or go untraced. The cargo, once loaded, is not unloaded or shifted onto another vehicle. The truck is sealed after loading and unsealed only at the destination." },
+    ],
   },
   {
-    icon: "📍", tag: "On-Time Guaranteed",
-    title: "Pick-Up Services",
-    intro: "Scheduled pick-up operations from seller warehouses and fulfillment centres with full tracking.",
-    points: ["Scheduled and on-demand pick-ups", "Proof of pickup documentation", "Trained pick-up executives", "Real-time status updates", "Multi-location pick-up routing", "Integration with seller portals"],
+    id: "odc",
+    tag: "ODC",
+    icon: "📦",
+    title: "Over Dimensional Cargo",
+    intro: "At times the material comes in a different size — big enough that it extends to 40 ft, 60 ft or even more. From identifying the right type of vehicle to ensuring that the material reaches safely to the destination while staying compliant with traffic guidelines, it requires an expert to handle ODC consignments. Our expert team takes care of all such requirements and we have delivered numerous such shipments with ease and accuracy.",
+    features: [
+      { title: "Reliable & Efficient", desc: "Our ODC Cargo Handling is highly acknowledged for safety, promptness, effectiveness, and reliability. Every over-dimensional shipment is handled with the highest standards." },
+      { title: "Cargo Solutions", desc: "We have a specialized team that can analyze your cargo and provide recommendations for the exact vehicle and routing solutions required for safe and compliant delivery." },
+      { title: "Accurate & Safe", desc: "We have delivered numerous over dimensional consignments of any size or volume across India with accuracy and safety — with all required permits and escort arrangements in place." },
+    ],
   },
   {
-    icon: "↩️", tag: "Hassle-Free",
-    title: "Return Logistics",
-    intro: "End-to-end reverse logistics management — collect, inspect, and reroute returned items.",
-    points: ["Customer-to-warehouse return collection", "Item condition inspection and reporting", "Rerouting to seller or fulfillment centre", "Complete return documentation", "Refund eligibility assessment support", "Return trend reporting for sellers"],
+    id: "single-window",
+    tag: "Integrated",
+    icon: "🔗",
+    title: "Single-Window Logistics Solutions",
+    intro: "Our diversified business services in surface transport, door to door delivery, and comprehensive logistics — all these services make it ideal for a customer to choose Frigate Logistics and experience integrated and customized offerings uniquely created for them. Our clients enjoy peace of mind and focus on their core work, while leaving the logistics worries to us, knowing that a champion will handle them.",
+    features: [
+      { title: "Flexible & Scalable", desc: "We have built flexible and scalable logistics capabilities and services that can augment and evolve in sync with your business volumes and needs — from a single shipment to bulk contracts." },
+      { title: "Secure & Efficient", desc: "We are fully equipped with state-of-the-art technology to manage your unique logistics needs — securely, efficiently, and effectively. Our platforms provide end-to-end visibility." },
+      { title: "Optimized Time & Resources", desc: "Right from providing infrastructure to managing and optimizing the transportation and enabling technologies — we bring in the benefits of optimized time and resources with a single-window response to clients." },
+    ],
   },
   {
-    icon: "🚛", tag: "Full Fleet Coverage",
-    title: "Fleet Transport",
-    intro: "A managed fleet of vehicles for bulk cargo movement — all cargo types handled with care.",
-    points: ["Full Truck Load (FTL) and Part Truck Load (PTL)", "Over Dimension Cargo (ODC) capability", "Temperature-sensitive cargo handling", "Fragile and high-value goods specialists", "GPS tracking on all fleet vehicles", "Insured cargo and vehicles"],
-  },
-  {
-    icon: "📡", tag: "Live Updates",
-    title: "Real-Time Tracking",
-    intro: "Live shipment tracking and delivery status updates for both senders and recipients.",
-    points: ["Live GPS tracking portal", "Automated delivery notifications via SMS/email", "Proof of delivery with photos", "Daily MIS and performance reports", "Exception alerts for delays or issues", "API integration available for enterprise clients"],
+    id: "value-added",
+    tag: "Value Added",
+    icon: "⭐",
+    title: "Plus Value Added Services",
+    intro: "With our experience and understanding of various industries, we know that each client has different logistics requirements. We therefore offer a plethora of value added services and let our clients have a felicitous choice. In payment options a client can choose from Paid, To Pay, or Billing. For delivery options it can be Door to Door, Godown to Door, Godown to Godown, Delivery against Consignee Copy (DACC), Cash on Delivery (COD), or any combination. For diversified services, clients can easily choose a combination of surface transport, express cargo movement, warehousing or end-to-end logistics solutions with us.",
+    features: [
+      { title: "Customer Centric Approach", desc: "We keep clients at the centre in everything that we do and our endeavour is to always give the best customer experience. Our dedicated team is just a click or call away to have your queries answered or provide any support you look for." },
+      { title: "Transparent Cost & Billing", desc: "Our company prides itself on transparent cost and billing structures with our clients. We ensure that our customers see the value through our services, with a single-point billing system that ensures right-time billing." },
+    ],
   },
 ];
 
-const roadTransportDetails = [
-  { code: "PTL", name: "Part Truck Load", desc: "Maximizing productivity and optimizing loading cost and travel time of cargo. Ideal for shipments that do not require a full truck." },
-  { code: "FTL", name: "Full Truck Load", desc: "Dedicated truck for your shipment — best for large volume cargo with direct routing and minimal handling." },
-  { code: "ODC", name: "Over Dimension Cargo", desc: "Specialized handling for cargo that exceeds standard dimensions — with required permits, escorts, and route planning." },
+const whyChoose = [
+  { icon: "⚡", title: "Efficient & Effective", desc: "Our updated technology, state-of-the-art infrastructure, and trained staff ensures the best customized cargo management and logistics solutions for all sizes and types of cargo at competitive costs with effective operations." },
+  { icon: "🎯", title: "Expert", desc: "Through longstanding relationships with our clients, we have years of expertise in handling voluminous types of material across geographies and industries. It is this expertise and network power that sets Frigate Logistics apart from the rest." },
+  { icon: "🤝", title: "Ethical", desc: "With technology and excellence in delivering cargo, one thing that can never be compromised is being Ethical. Frigate Logistics is known for its ethical dealings with employees, vendors and other stakeholders. This trait runs in the very DNA of the company." },
 ];
 
 export default function ServicesPage() {
   const hero = useInView(0.1);
-  const main = useInView();
-  const road = useInView();
-  const value = useInView();
+  const why = useInView();
   const cta = useInView();
 
   return (
     <main>
-      {/* Hero */}
+      {/* Page Hero */}
       <section style={{ paddingTop: "140px", paddingBottom: "80px", background: "radial-gradient(ellipse at 30% 50%, #1E3A5F 0%, #0A1628 65%)", borderBottom: "1px solid rgba(44,74,110,0.4)", position: "relative", overflow: "hidden" }} ref={hero.ref}>
         <div style={{ position: "absolute", inset: 0, opacity: 0.04, backgroundImage: "linear-gradient(rgba(192,200,216,0.5) 1px,transparent 1px),linear-gradient(90deg,rgba(192,200,216,0.5) 1px,transparent 1px)", backgroundSize: "60px 60px" }} />
         <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 32px", position: "relative" }}>
           <div style={sfade(hero.inView)}>
-            <div className="section-label"><span />Services<span /></div>
+            <div className="section-label"><span />Our Services<span /></div>
             <h1 style={{ fontSize: "clamp(2.4rem,5vw,3.8rem)", fontWeight: 800, color: "white", fontFamily: "'Playfair Display',serif", marginBottom: "20px", lineHeight: 1.15 }}>
-              Customised Integrated<br />
-              <span style={{ background: "linear-gradient(90deg,#D4A843,#F0C96A)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Logistics Solutions For You</span>
+              Pan India Frigate Logistics<br />
+              <span style={{ background: "linear-gradient(90deg,#D4A843,#F0C96A)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Solutions</span>
             </h1>
-            <p style={{ color: "#C0C8D8", fontSize: "1.05rem", lineHeight: 1.75, maxWidth: "600px" }}>
-              All elements of your cargo management are evaluated to best suit your logistics needs. A combination that best suits your requirements is crafted as a solution and offered with the best possible standards.
+            <p style={{ color: "#C0C8D8", fontSize: "1.05rem", lineHeight: 1.75, maxWidth: "640px" }}>
+              Crafted and curated solutions from the wide range of logistics services that we provide, with a focus to customize and make it apt for our clients&apos; needs. We strive to be the logistics edge for our clients, by diligently blending technology, infrastructure, people-expertise and commitment.
+            </p>
+            {/* Quick nav */}
+            <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" as const, marginTop: "36px" }}>
+              {services.map(s => (
+                <a key={s.id} href={`#${s.id}`} style={{ background: "rgba(30,58,95,0.6)", border: "1px solid rgba(44,74,110,0.8)", color: "#C0C8D8", padding: "8px 18px", borderRadius: "100px", fontSize: "13px", fontWeight: 600, textDecoration: "none", transition: "all 0.3s" }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "#D4A843"; (e.currentTarget as HTMLElement).style.color = "#D4A843"; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(44,74,110,0.8)"; (e.currentTarget as HTMLElement).style.color = "#C0C8D8"; }}
+                >
+                  {s.tag}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services — one per section */}
+      {services.map((service, idx) => {
+        const isEven = idx % 2 === 0;
+        return (
+          <ServiceSection key={service.id} service={service} isEven={isEven} />
+        );
+      })}
+
+      {/* Why Choose Frigate */}
+      <section style={{ padding: "100px 0", background: "linear-gradient(180deg,#0d1e38,#0A1628)" }} ref={why.ref}>
+        <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 32px" }}>
+          <div style={{ textAlign: "center", marginBottom: "60px", ...sfade(why.inView) }}>
+            <div className="section-label" style={{ justifyContent: "center" }}><span />Why Choose Us<span /></div>
+            <h2 style={{ fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 800, color: "white", fontFamily: "'Playfair Display',serif", marginBottom: "16px" }}>Why Choose Frigate Logistics</h2>
+            <p style={{ color: "#C0C8D8", maxWidth: "600px", margin: "0 auto", lineHeight: 1.7 }}>
+              The leadership of surface transport exposure, warehousing & 3PL strength, and logistics delivery expertise makes Frigate Logistics the preferred choice.
             </p>
           </div>
-        </div>
-      </section>
-
-      {/* Main Services Grid */}
-      <section style={{ padding: "100px 0", background: "#0A1628" }} ref={main.ref}>
-        <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 32px" }}>
-          <div style={{ textAlign: "center", marginBottom: "64px", ...sfade(main.inView) }}>
-            <div className="section-label" style={{ justifyContent: "center" }}><span />All Services<span /></div>
-            <h2 style={{ fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 800, color: "white", fontFamily: "'Playfair Display',serif" }}>Everything We Offer</h2>
-          </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
-            {services.map((s, i) => (
-              <ServiceDetailCard key={s.title} service={s} inView={main.inView} delay={i * 0.07} index={i} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Road Transport */}
-      <section style={{ padding: "100px 0", background: "linear-gradient(180deg,#0d1e38,#0A1628)" }} ref={road.ref}>
-        <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 32px" }}>
-          <div style={{ textAlign: "center", marginBottom: "60px", ...sfade(road.inView) }}>
-            <div className="section-label" style={{ justifyContent: "center" }}><span />Road Transport<span /></div>
-            <h2 style={{ fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 800, color: "white", fontFamily: "'Playfair Display',serif", marginBottom: "16px" }}>PTL / FTL / ODC</h2>
-            <p style={{ color: "#C0C8D8", maxWidth: "520px", margin: "0 auto", lineHeight: 1.7 }}>Maximizing productivity and optimizing loading cost and travel time. Part Load, Full Load, Over Dimension Cargo — all covered.</p>
-          </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "24px" }}>
-            {roadTransportDetails.map((r, i) => (
-              <div key={r.code} style={{ background: "rgba(30,58,95,0.4)", border: "1px solid rgba(44,74,110,0.6)", borderRadius: "18px", padding: "36px", ...sfade(road.inView, i * 0.1), transition: `all 0.7s ease ${i * 0.1}s` }}>
-                <div style={{ fontSize: "2rem", fontWeight: 800, color: "#D4A843", fontFamily: "'Playfair Display',serif", marginBottom: "8px" }}>{r.code}</div>
-                <h3 style={{ color: "white", fontWeight: 700, fontSize: "1.1rem", marginBottom: "14px" }}>{r.name}</h3>
-                <p style={{ color: "#C0C8D8", fontSize: "13.5px", lineHeight: 1.7 }}>{r.desc}</p>
+            {whyChoose.map((w, i) => (
+              <div key={w.title} style={{ background: "rgba(30,58,95,0.3)", border: "1px solid rgba(44,74,110,0.6)", borderRadius: "18px", padding: "36px", ...sfade(why.inView, i * 0.1), transition: `all 0.7s ease ${i * 0.1}s` }}>
+                <div style={{ fontSize: "36px", marginBottom: "18px" }}>{w.icon}</div>
+                <h3 style={{ color: "white", fontWeight: 700, fontSize: "1.1rem", marginBottom: "12px", fontFamily: "'Playfair Display',serif" }}>{w.title}</h3>
+                <p style={{ color: "#C0C8D8", fontSize: "13.5px", lineHeight: 1.75 }}>{w.desc}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Value Added Services */}
-      <section style={{ padding: "100px 0", background: "#0A1628" }} ref={value.ref}>
-        <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 32px" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }} className="two-col">
-            <div style={sfade(value.inView)}>
-              <div className="section-label"><span />Value Added<span /></div>
-              <h2 style={{ fontSize: "clamp(1.8rem,3vw,2.6rem)", fontWeight: 800, color: "white", fontFamily: "'Playfair Display',serif", marginBottom: "24px", lineHeight: 1.25 }}>Tailor-Made Solutions for Your Cargo</h2>
-              <p style={{ color: "#C0C8D8", lineHeight: 1.8, marginBottom: "20px" }}>Whether raw material, finished goods, fragile goods, or perishable goods — we craft a delivery solution that fits your exact requirements with the required delivery option.</p>
-              <p style={{ color: "#C0C8D8", lineHeight: 1.8, marginBottom: "36px" }}>Door to Door, Godown to Door, Godown to Godown, and many more configurations — all with full tracking and documentation.</p>
-              <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
-                {["Door to Door delivery","Godown to Godown transfer","Fragile goods specialised handling","Perishable & cold chain support","Customised packaging options","On-demand scheduling"].map(item=>(
-                  <div key={item} style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                    <div style={{ width: "20px", height: "20px", borderRadius: "50%", background: "rgba(212,168,67,0.2)", border: "1px solid rgba(212,168,67,0.4)", display: "flex", alignItems: "center", justifyContent: "center", color: "#D4A843", fontSize: "10px", flexShrink: 0 }}>✓</div>
-                    <span style={{ color: "#C0C8D8", fontSize: "14px" }}>{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div style={{ ...sfade(value.inView, 0.2), background: "rgba(30,58,95,0.3)", border: "1px solid rgba(44,74,110,0.6)", borderRadius: "24px", padding: "48px" }}>
-              <h3 style={{ color: "white", fontSize: "1.3rem", fontWeight: 700, fontFamily: "'Playfair Display',serif", marginBottom: "28px" }}>Customised Services</h3>
-              <p style={{ color: "#C0C8D8", lineHeight: 1.8, marginBottom: "28px" }}>Customized solutions for your logistics needs. All elements of the cargo management are evaluated to best suit your logistics needs. A combination that best suits your requirements with best possible standards is crafted as a solution and offered.</p>
-              <div style={{ borderTop: "1px solid rgba(44,74,110,0.5)", paddingTop: "28px" }}>
-                <div style={{ color: "#D4A843", fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, marginBottom: "16px" }}>Get a Custom Quote</div>
-                <p style={{ color: "#C0C8D8", fontSize: "13.5px", lineHeight: 1.7, marginBottom: "24px" }}>Tell us about your cargo requirements and we will craft the perfect logistics solution for your business.</p>
-                <Link href="/contact" className="btn-primary">Request a Quote <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></Link>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -158,49 +156,66 @@ export default function ServicesPage() {
       <section style={{ padding: "80px 0", background: "linear-gradient(135deg,#1E3A5F 0%,#0A1628 100%)", borderTop: "1px solid rgba(44,74,110,0.4)" }} ref={cta.ref}>
         <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 32px", textAlign: "center" }}>
           <div style={sfade(cta.inView)}>
-            <h2 style={{ fontSize: "clamp(1.8rem,3.5vw,2.6rem)", fontWeight: 800, color: "white", fontFamily: "'Playfair Display',serif", marginBottom: "20px" }}>Ready to Get Started?</h2>
-            <p style={{ color: "#C0C8D8", maxWidth: "500px", margin: "0 auto 36px", lineHeight: 1.7 }}>Contact us today for a customised logistics quote and let Frigate Logistics become the logistics edge your business needs.</p>
+            <h2 style={{ fontSize: "clamp(1.8rem,3.5vw,2.6rem)", fontWeight: 800, color: "white", fontFamily: "'Playfair Display',serif", marginBottom: "20px" }}>Make a Business Enquiry</h2>
+            <p style={{ color: "#C0C8D8", maxWidth: "500px", margin: "0 auto 36px", lineHeight: 1.7 }}>
+              Contact us today for a customised logistics quote. Let Frigate Logistics become the logistics edge your business needs.
+            </p>
             <div style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap" as const }}>
-              <Link href="/contact" className="btn-primary">Get a Free Quote <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></Link>
+              <Link href="/contact" className="btn-primary">Make Business Enquiry <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></Link>
               <Link href="/about" className="btn-outline">About Us</Link>
             </div>
           </div>
         </div>
       </section>
-
-      <style>{`.two-col{grid-template-columns:1fr 1fr;} @media(max-width:768px){.two-col{grid-template-columns:1fr!important;}}`}</style>
     </main>
   );
 }
 
-function ServiceDetailCard({ service, inView, delay, index }: { service: typeof services[0]; inView: boolean; delay: number; index: number }) {
-  const [expanded, setExpanded] = useState(false);
-  const isEven = index % 2 === 0;
+function ServiceSection({ service, isEven }: { service: typeof services[0]; isEven: boolean }) {
+  const { ref, inView } = useInView();
+  const sfadeLocal = (delay = 0): React.CSSProperties => ({
+    opacity: inView ? 1 : 0,
+    transform: inView ? "translateY(0)" : "translateY(28px)",
+    transition: `opacity 0.7s ease ${delay}s, transform 0.7s ease ${delay}s`,
+  });
+
   return (
-    <div style={{ background: "rgba(30,58,95,0.25)", border: "1px solid rgba(44,74,110,0.6)", borderRadius: "20px", overflow: "hidden", opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(24px)", transition: `all 0.6s ease ${delay}s` }}>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0" }} className="svc-card-grid">
-        {/* Left/Right alternating content */}
-        <div style={{ padding: "40px", background: isEven ? "rgba(30,58,95,0.4)" : "transparent", order: isEven ? 1 : 2 }}>
-          <div style={{ fontSize: "48px", marginBottom: "16px" }}>{service.icon}</div>
-          <div style={{ display: "inline-block", fontSize: "10px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "#D4A843", background: "rgba(212,168,67,0.1)", border: "1px solid rgba(212,168,67,0.2)", padding: "4px 12px", borderRadius: "100px", marginBottom: "16px" }}>{service.tag}</div>
-          <h3 style={{ color: "white", fontWeight: 700, fontSize: "1.4rem", marginBottom: "14px", fontFamily: "'Playfair Display',serif" }}>{service.title}</h3>
-          <p style={{ color: "#C0C8D8", lineHeight: 1.75, marginBottom: "24px" }}>{service.intro}</p>
-          <button onClick={() => setExpanded(!expanded)} style={{ background: "none", border: "1px solid rgba(212,168,67,0.4)", color: "#D4A843", borderRadius: "8px", padding: "8px 18px", fontSize: "13px", fontWeight: 600, cursor: "pointer", transition: "all 0.3s" }}>
-            {expanded ? "Show Less ↑" : "View Features ↓"}
-          </button>
-        </div>
-        <div style={{ padding: "40px", order: isEven ? 2 : 1 }}>
-          <div style={{ color: "#D4A843", fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, marginBottom: "20px" }}>Key Features</div>
-          <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
-            {service.points.slice(0, expanded ? service.points.length : 4).map(p => (
-              <div key={p} style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
-                <div style={{ width: "20px", height: "20px", borderRadius: "50%", background: "rgba(212,168,67,0.15)", border: "1px solid rgba(212,168,67,0.3)", display: "flex", alignItems: "center", justifyContent: "center", color: "#D4A843", fontSize: "10px", flexShrink: 0, marginTop: "1px" }}>✓</div>
-                <span style={{ color: "#C0C8D8", fontSize: "14px", lineHeight: 1.5 }}>{p}</span>
-              </div>
-            ))}
+    <section
+      id={service.id}
+      style={{ padding: "90px 0", background: isEven ? "#0A1628" : "linear-gradient(180deg,#0d1e38,#0A1628)", borderTop: "1px solid rgba(44,74,110,0.3)" }}
+      ref={ref}
+    >
+      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 32px" }}>
+        {/* Header */}
+        <div style={{ marginBottom: "56px", ...sfadeLocal() }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "20px", flexWrap: "wrap" as const }}>
+            <span style={{ fontSize: "48px" }}>{service.icon}</span>
+            <span style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#D4A843", background: "rgba(212,168,67,0.1)", border: "1px solid rgba(212,168,67,0.25)", padding: "5px 14px", borderRadius: "100px" }}>{service.tag}</span>
           </div>
+          <h2 style={{ fontSize: "clamp(1.8rem,3.5vw,2.6rem)", fontWeight: 800, color: "white", fontFamily: "'Playfair Display',serif", marginBottom: "20px" }}>{service.title}</h2>
+          <p style={{ color: "#C0C8D8", fontSize: "1rem", lineHeight: 1.85, maxWidth: "860px" }}>{service.intro}</p>
+        </div>
+
+        {/* Feature cards */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "20px", marginBottom: "36px" }}>
+          {service.features.map((f, i) => (
+            <div key={f.title} style={{ background: "rgba(30,58,95,0.35)", border: "1px solid rgba(44,74,110,0.6)", borderRadius: "16px", padding: "28px", ...sfadeLocal(0.1 + i * 0.08), transition: `all 0.7s ease ${0.1 + i * 0.08}s` }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "12px" }}>
+                <div style={{ width: "28px", height: "28px", borderRadius: "8px", background: "rgba(212,168,67,0.15)", border: "1px solid rgba(212,168,67,0.3)", display: "flex", alignItems: "center", justifyContent: "center", color: "#D4A843", fontSize: "13px", flexShrink: 0 }}>✓</div>
+                <h3 style={{ color: "white", fontWeight: 700, fontSize: "1rem" }}>{f.title}</h3>
+              </div>
+              <p style={{ color: "#C0C8D8", fontSize: "13.5px", lineHeight: 1.75 }}>{f.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div style={sfadeLocal(0.3)}>
+          <Link href="/contact" className="btn-primary" style={{ fontSize: "13px" }}>
+            Make Business Enquiry
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </Link>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
