@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 const trustItems = [
-  { icon: "📦", label: "Amazon DSP Partner" },
+  { icon: "📦", label: "Amazon EEDSP Partner" },
   { icon: "🏭", label: "MFN Certified" },
   { icon: "🗺️", label: "Pan-India Coverage" },
   { icon: "✅", label: "ISO Compliant" },
@@ -21,7 +21,7 @@ const whyItems = [
 ];
 
 const services = [
-  { icon: "🚚", title: "Amazon Last-Mile Delivery", desc: "Reliable door-step delivery across all pin codes as an authorized Amazon DSP. Fast, safe, and fully tracked.", tag: "DSP Partner" },
+  { icon: "🚚", title: "Amazon Last-Mile Delivery", desc: "Reliable door-step delivery across all pin codes as an authorized Amazon EDSP. Fast, safe, and fully tracked.", tag: "EDSP Partner" },
   { icon: "📋", title: "MFN Fulfillment", desc: "Merchant Fulfilled Network order processing from warehouse pick to dispatch. Storage, packing, and shipping handled end-to-end.", tag: "MFN Certified" },
   { icon: "📍", title: "Pick-Up Services", desc: "Scheduled pick-up from seller warehouses and fulfilment centres. Timely collection with full tracking and proof of pickup.", tag: "On-Time" },
   { icon: "↩️", title: "Return Logistics", desc: "End-to-end reverse logistics management. Collect, inspect, and reroute returned items with complete documentation.", tag: "Returns" },
@@ -126,7 +126,7 @@ export default function HomePage() {
                 <div style={{ position: "absolute", top: "-5px", left: "50%", width: "10px", height: "10px", borderRadius: "50%", background: "#D4A843", boxShadow: "0 0 12px #D4A843", transform: "translateX(-50%)" }}/>
               </div>
               <div style={{ position: "relative", width: "260px", height: "260px", borderRadius: "50%", overflow: "hidden", boxShadow: "0 0 80px rgba(212,168,67,0.2),0 0 0 4px #1E3A5F", ...fade(0.3) }}>
-                <Image src="/logo.jpeg" alt="Frigate Logistics" fill style={{ objectFit: "cover" }} priority/>
+                <Image src="/logo.png" alt="Frigate Logistics" fill style={{ objectFit: "cover" }} priority/>
               </div>
               <div style={{ position: "absolute", top: "30px", right: "10px", background: "rgba(6,15,30,0.95)", border: "1px solid #2C4A6E", borderRadius: "14px", padding: "12px 16px", ...fade(0.8) }}>
                 <div style={{ color: "#D4A843", fontSize: "10px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>AMAZON</div>
