@@ -21,15 +21,33 @@ export default function ContactPage() {
   const hero = useInView(0.1);
   const form = useInView();
   const [data, setData] = useState({ name: "", email: "", phone: "", service: "", message: "" });
-  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
-    // In production this would POST to an API route that emails the right team
-    // Ecommerce -> sunil@fll.co.in, hardik@fll.co.in
-    // Transport -> rpchoudhary@fll.co.in
-    setTimeout(() => setStatus("sent"), 1600);
+    setErrorMsg("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const result = await res.json();
+
+      if (res.ok && result.success) {
+        setStatus("sent");
+      } else {
+        setStatus("error");
+        setErrorMsg(result.error || "Something went wrong. Please try again.");
+      }
+    } catch {
+      setStatus("error");
+      setErrorMsg("Network error. Please check your connection and try again.");
+    }
   };
 
   const ecommerceContacts = [
@@ -211,6 +229,11 @@ export default function ContactPage() {
                   <textarea required rows={5} className="form-input" style={{ resize: "none" }} placeholder="Tell us about your requirements..." value={data.message} onChange={e => setData({ ...data, message: e.target.value })} />
                 </div>
 
+                {status === "error" && (
+                  <div style={{ background: "rgba(220,50,50,0.1)", border: "1px solid rgba(220,50,50,0.3)", borderRadius: "10px", padding: "14px 18px", color: "#FF8080", fontSize: "13px" }}>
+                    ⚠️ {errorMsg}
+                  </div>
+                )}
                 <button type="submit" className="btn-primary" style={{ justifyContent: "center" }} disabled={status === "sending" || !data.service}>
                   {status === "sending" ? (
                     <><svg style={{ width: "16px", height: "16px", animation: "spin 1s linear infinite" }} fill="none" viewBox="0 0 24 24"><circle style={{ opacity: 0.25 }} cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/><path style={{ opacity: 0.75 }} fill="currentColor" d="M4 12a8 8 0 018-8v8z"/></svg> Sending...</>
