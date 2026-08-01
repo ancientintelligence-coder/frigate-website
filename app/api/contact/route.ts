@@ -5,7 +5,7 @@ import nodemailer from "nodemailer";
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST || "smtp.zoho.com",
   port: Number(process.env.SMTP_PORT) || 587,
-  secure: false, // STARTTLS on port 587
+  secure: true, // STARTTLS on port 587
   auth: {
     user: process.env.SMTP_USER || "it@flplindia.com",
     pass: process.env.SMTP_PASS || "FlplIt@123",
