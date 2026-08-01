@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
     // Route to the correct team based on service selected
     const toEmails =
       service === "Ecommerce"
-        ? ["sunil@fll.co.in", "hardik@fll.co.in"]
+        ? ["it@flplindia.com"]
         : ["rpchoudhary@fll.co.in"];
 
     const serviceLabel =
